@@ -107,13 +107,28 @@ namespace CSClass2
             pcB.x = 100; pcB.y = 200;
             Console.WriteLine("pcA. x:" + pcA.x + ", y: " + pcA.y);
             Console.WriteLine("pcB. x:" + pcB.x + ", y: " + pcB.y);
-
+           
             PointStruct psA = new PointStruct(10, 20);
             PointStruct psB = psA;
             psB.x = 100; psB.y = 200;
             Console.WriteLine("psA. x:" + psA.x + ", y: " + psA.y);
             Console.WriteLine("psB. x:" + psB.x + ", y: " + psB.y);
+            Console.WriteLine("===========================================");
 
+            List<Product> products = new List<Product>()
+            {
+                new Product(){Name="고구마", Price=1500 },
+                new Product(){Name="사과", Price=3000 },
+                new Product(){Name="바나나", Price=1000 },
+                new Product(){Name="배", Price=4000},
+            };
+
+            products.Sort();
+
+            foreach (var item in products)
+            {
+                Console.WriteLine(item);
+            }
 
         }
     }
