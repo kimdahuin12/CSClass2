@@ -17,6 +17,24 @@ namespace CSClass2
             }
         }
 
+        class TestClass : IBasic
+        {
+            public int foobar()
+            {
+                return -1;
+            }
+            public int TestProperty
+            {
+                get => throw new NotImplementedException();
+                set => throw new NotImplementedException();
+            }
+
+            public int TestInstanceMethod()
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         static void NextPosition(int x, int y, int vx ,int vy, out int rx, out int ry)
         {
             rx = x + vx;
@@ -142,6 +160,11 @@ namespace CSClass2
                 }
             }
 
+            IBasic test = new TestClass();
+            test.TestInstanceMethod();
+            test.TestProperty = 2;
+            //test.foobar();
+            (test as TestClass).foobar();
         }
     }
 }
