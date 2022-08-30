@@ -8,6 +8,15 @@ namespace CSClass2
 {
     internal class Program
     {
+        class Dummy : IDisposable
+        {
+            public void Dispose()
+            {
+
+                Console.WriteLine("Dispose 메서드를 호출했습니다.");
+            }
+        }
+
         static void NextPosition(int x, int y, int vx ,int vy, out int rx, out int ry)
         {
             rx = x + vx;
@@ -115,19 +124,22 @@ namespace CSClass2
             Console.WriteLine("psB. x:" + psB.x + ", y: " + psB.y);
             Console.WriteLine("===========================================");
 
-            List<Product> products = new List<Product>()
+            using (Dummy dummy = new Dummy())
             {
-                new Product(){Name="고구마", Price=1500 },
-                new Product(){Name="사과", Price=3000 },
-                new Product(){Name="바나나", Price=1000 },
-                new Product(){Name="배", Price=4000},
-            };
+                List<Product> products = new List<Product>()
+                {
+                    new Product(){Name="고구마", Price=1500 },
+                    new Product(){Name="사과", Price=3000 },
+                    new Product(){Name="바나나", Price=1000 },
+                    new Product(){Name="배", Price=4000},
+                };
 
-            products.Sort();
+                products.Sort();
 
-            foreach (var item in products)
-            {
-                Console.WriteLine(item);
+                foreach (var item in products)
+                {
+                    Console.WriteLine(item);
+                }
             }
 
         }
